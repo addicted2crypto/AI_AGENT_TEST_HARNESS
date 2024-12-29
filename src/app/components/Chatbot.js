@@ -47,8 +47,9 @@ const Chatbot = () => {
             setConversation((prevConversation) => [...prevConversation, 
                 {type: 'user', message: userMessage},
                 {type: 'bot', message: data.message.content}]);
-                return response.json();
-            // setUserMessage('');
+                setUserMessage('');
+                // return response.json();
+           
         } catch (error) {
             console.error(error);
         } finally {
@@ -128,7 +129,7 @@ const Chatbot = () => {
                         Tool 2 web ai agent ?
                     </option>
                 </select>
-                <ul className='mt-4'>
+                {/* <ul className='mt-4'>
                     {conversation.map((message, index) => (
                         <li key={index} className='mb-2'>
                             <p className='text-lg'>
@@ -138,7 +139,7 @@ const Chatbot = () => {
                         </li>
                     ))}
 
-                </ul>
+                </ul> */}
 
             </div>
         </div>
