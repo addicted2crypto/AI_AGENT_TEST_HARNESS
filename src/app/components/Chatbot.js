@@ -148,7 +148,7 @@ const Chatbot = () => {
                 </button>
             </form>
 
-            <div className='w-[40rem]'>
+            <div className='w-[40rem] h-[100rem]'>
                 {conversation.map((message, index) => (
                     <div key={index}>
                         <p style={{
