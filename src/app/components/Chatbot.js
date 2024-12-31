@@ -57,10 +57,11 @@ const Chatbot = () => {
             setUserMessage('');
            
             // return response.json();
-
+            setIsBotResponding(false);
         } catch (error) {
             console.error(error);
         } finally {
+           
             setIsSending(false);
         }
     };
@@ -140,7 +141,7 @@ const Chatbot = () => {
                     placeholder='Type your message here...'
                     className='w-full p-2 border border-gray-300 rounded-md mb-4' />
                 <button
-
+                   
                     disabled={!userMessage}
                     type='submit'
                     className='bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-md'>
@@ -160,7 +161,7 @@ const Chatbot = () => {
                     </div>
 
                 )) }
-                {isBotResponding  &&(
+                {isBotResponding ? "Uploading your agents response..."  :  (
                     <div className=' h-[50rem] w-full'>
                 <p style={{ color: '#61dd09'}}>
                     Bot🤖:
@@ -173,7 +174,7 @@ const Chatbot = () => {
                   </div>
                   </SkeletonTheme>
                   </div>
-                    )}
+                    ) }
             </div>
 
         </div>
