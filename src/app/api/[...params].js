@@ -12,6 +12,7 @@ export default async function handler(req, res) {
        });
         console.log('Response:', response)
     // })
+    //this handler doesnt seem to work at all.... fix me
     // const response = await axios.post('/api/chat', {
     //   method: 'POST',
     //   headers: {'Content-Type' :'application/json'},
