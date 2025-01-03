@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
-
+import ollama  from 'ollama';
 
 const Chatbot = () => {
     const [conversation, setConversation] = useState([]);
@@ -13,6 +13,17 @@ const Chatbot = () => {
     const [currentPrompt, setCurrentPrompt] = useState('You are a world-class AI system, capable of complex reasoning and reflection. Reason through the query inside <thinking> tags, and then provide your final response inside <output> tags. If you detect that you made a mistake in your reasoning at any point, correct yourself inside <reflection> tags');
     const [currentTool, setCurrentTool] = ('tool1');
 
+
+    const Agent = z.object({
+        name: z.string(),
+        model: z.string(),
+        roles: z.array(z.string()),
+    });
+
+    const response = await ollama.chat({
+        model: 'llama2',
+        messages :({role: 'user', content: 'Tell me what task you want me to complete on your behave'})
+    })
 
     const handleSendMessage = async (e) => {
 
