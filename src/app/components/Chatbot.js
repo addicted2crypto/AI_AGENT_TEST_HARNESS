@@ -63,7 +63,7 @@ const Chatbot = () => {
 
             setConversation((prevConversation) => [...prevConversation,
             // { type: 'user', message: userMessage },
-            { type: 'bot', message: data.content }]);
+            { type: 'bot', message: data.message.content }]);
            
             setUserMessage('');
            
