@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
+// import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 // import ollama  from 'ollama';
 
 const Chatbot = () => {
@@ -172,20 +172,21 @@ const Chatbot = () => {
                     </div>
 
                 )) }
-                {isBotResponding ? "Uploading your agents response..."  :  (
+                {/* {isBotResponding ? "Uploading your agents response..."  :  (
                     <div className=' h-[50rem] w-full'>
                 <p style={{ color: '#61dd09'}}>
+                    <Skeleton className="flex-1" height={50} width={!200}/>
                     Bot🤖:
                 </p>
                 <SkeletonTheme baseColor='#a2a0a0' highlightColor="#52ca52">
                     <div className='!min-w-30 h-[50rem] !w-full'>
                        
                   <Skeleton className="flex-1" height={50} width={!200}/>
-                
-                  </div>
+                 */}
+                  {/* </div>
                   </SkeletonTheme>
-                  </div>
-                    ) }
+                  </div> */}
+                    {/* ) } */}
             </div>
 
         </div>
