@@ -189,7 +189,7 @@ const Chatbot = () => {
                <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
                </div>
                 ) : (
-                    <Skeleton className='pl-16 w-[30rem] h-[1rem] rounded-none' />
+                    <Skeleton className='pl-16 w-[30rem] h-[1rem] rounded-md' />
                 )}
             </div>
 
