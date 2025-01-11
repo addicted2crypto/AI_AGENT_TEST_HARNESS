@@ -8,7 +8,7 @@ export async function middleware(req: NextRequest) {
     const response = new Response('Hello world!', {
         headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, ",
         },
     });
     return response;

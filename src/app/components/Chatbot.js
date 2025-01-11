@@ -2,9 +2,11 @@
 
 import { Skeleton } from '@/components/ui/skeleton';
 import { useState } from 'react';
-// import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
-// import ollama  from 'ollama';
-
+import axios from 'axios';
+import { middleware } from '../_middleware';
+import chatHandler from '../api/chat';
+const _cfAccessClientSecret = process.env._cfAccessClientSecret;
+ const _clientId = process.env._clientId;
 const Chatbot = () => {
     const [conversation, setConversation] = useState([]);
     const [userMessage, setUserMessage] = useState('');
@@ -15,16 +17,12 @@ const Chatbot = () => {
     const [currentTool, setCurrentTool] = ('tool1');
 
 
-    // const Agent = z.object({
-    //     name: z.string(),
-    //     model: z.string(),
-    //     roles: z.array(z.string()),
-    // });
-
-    // const response = ollama.chat({
-    //     model: 'llama2',
-    //     messages :({role: 'user', content: 'Tell me what task you want me to complete on your behave'})
-    // })
+    // const getAccessToken = async() => {
+    //     const response = await axios.post('https://ai.ainetguard.com', {
+    //         grant_type: 'client_creditials', client_id: _clientId, client_secret: _cfAccessClientSecret,
+    //     });
+    //     return response.data.result.access_token;
+    // };
 
     const handleSendMessage = async (e) => {
 
@@ -38,24 +36,32 @@ const Chatbot = () => {
           setIsBotResponding(true);
 
         try {
-            // setConversation([...conversation, {type: 'user', message: userMessage}]);
+            // const access_token = await getAccessToken();
+            const chatResponse = chatHandler;
             const requestBody = {
-                "system" : "You are a world-class AI system, capable of complex reasoning and reflection. Reason through the query inside <thinking> tags, and then provide your final response inside <output> tags. If you detect that you made a mistake in your reasoning at any point, correct yourself inside <reflection> tags",
+                // "system" : "You are a world-class AI system, capable of complex reasoning and reflection. Reason through the query inside <thinking> tags, and then provide your final response inside <output> tags. If you detect that you made a mistake in your reasoning at any point, correct yourself inside <reflection> tags",
                 "model": "llama2",
                 "messages": [{"role": "assistant", "content": ""}, { "role": "user", "content": userMessage }],
                 "stream": false
             };
-            //add current proxy to hit for fetch
+            
             const response = await fetch('http://localhost:11434/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBody),
-
-
-            });
-            // if (!response.ok) {
-            //     throw new Error(`Error: ${response.status}`);
-            // }
+               
+            method: 'POST', 
+            //  middleware ,
+                
+                    headers: { 'Content-Type': 'application/json' },
+                    // 'Authorization'  : `Bearer ${access_token}`
+                   
+                    body: JSON.stringify(requestBody),
+                    // chatHandler,
+                
+                });
+            
+                
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
 
 
             const data = await response.json();
@@ -175,7 +181,7 @@ const Chatbot = () => {
                 )) }
 
                 {isBotResponding ? "Please wait while we generate your response..." : (
-               <Skeleton className='w-[40rem] h-[10rem] rounded-full' />
+               <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
                 )}
             </div>
 
