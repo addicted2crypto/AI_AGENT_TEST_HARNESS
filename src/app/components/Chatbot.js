@@ -180,8 +180,16 @@ const Chatbot = () => {
 
                 )) }
 
-                {isBotResponding ? "Please wait while we generate your response..." : (
+                {isBotResponding ? (
+                    
+                    <div className='p-2 space-y-3'>
+                        "Please wait while we generate your response... 
                <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
+               <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
+               <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
+               </div>
+                ) : (
+                    <Skeleton className='pl-16 w-[30rem] h-[1rem] rounded-none' />
                 )}
             </div>
 
