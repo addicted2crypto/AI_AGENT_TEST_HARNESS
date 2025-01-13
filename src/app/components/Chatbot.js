@@ -7,6 +7,7 @@ import { middleware } from '../_middleware';
 import chatHandler from '../api/chat';
 const _cfAccessClientSecret = process.env._cfAccessClientSecret;
  const _clientId = process.env._clientId;
+ const _accessToken = process.env._accessToken;
 const Chatbot = () => {
     const [conversation, setConversation] = useState([]);
     const [userMessage, setUserMessage] = useState('');
@@ -17,12 +18,7 @@ const Chatbot = () => {
     const [currentTool, setCurrentTool] = ('tool1');
 
 
-    // const getAccessToken = async() => {
-    //     const response = await axios.post('https://ai.ainetguard.com', {
-    //         grant_type: 'client_creditials', client_id: _clientId, client_secret: _cfAccessClientSecret,
-    //     });
-    //     return response.data.result.access_token;
-    // };
+    
 
     const handleSendMessage = async (e) => {
 
@@ -39,19 +35,19 @@ const Chatbot = () => {
             // const access_token = await getAccessToken();
             const chatResponse = chatHandler;
             const requestBody = {
-                // "system" : "You are a world-class AI system, capable of complex reasoning and reflection. Reason through the query inside <thinking> tags, and then provide your final response inside <output> tags. If you detect that you made a mistake in your reasoning at any point, correct yourself inside <reflection> tags",
+                "system" : "You are a world-class AI system, capable of complex reasoning and reflection. Reason through the query inside <thinking> tags, and then provide your final response inside <output> tags. If you detect that you made a mistake in your reasoning at any point, correct yourself inside <reflection> tags",
                 "model": "llama2",
                 "messages": [{"role": "assistant", "content": ""}, { "role": "user", "content": userMessage }],
                 "stream": false
             };
             
-            const response = await fetch('http://localhost:11434/api/chat', {
+            const response = await fetch('https://localhost11434', {
                
             method: 'POST', 
             //  middleware ,
                 
-                    headers: { 'Content-Type': 'application/json' },
-                    // 'Authorization'  : `Bearer ${access_token}`
+                    headers: { 'Content-Type': 'application/json' ,
+                    'Authorization'  : `Bearer ${_accessToken}`},
                    
                     body: JSON.stringify(requestBody),
                     // chatHandler,
@@ -66,7 +62,7 @@ const Chatbot = () => {
 
             const data = await response.json();
 
-            // const botResponse = data;
+            
 
             setConversation((prevConversation) => [...prevConversation,
             // { type: 'user', message: userMessage },
@@ -95,7 +91,7 @@ const Chatbot = () => {
         setCurrentPrompt(e.target.value);
     }
     return (
-        <div className='max-w-4xl mx-auto p-4'>
+        <div className='max-w-4xl mx-auto p-3 gap-1'>
 
             <header className='top-2 pb-[8rem] flex flex-col md:flex-row justify-around'>
                 <div className='mt-4 w-1/3 '>
@@ -148,7 +144,7 @@ const Chatbot = () => {
             </header>
 
 
-            <h1 className='text-2xl font-bold mb-4 '>
+            <h1 className='text-2xl font-bold mb-4'>
                 Chatbot
             </h1>
             <form onSubmit={(e) => handleSendMessage(e)}>
@@ -182,14 +178,16 @@ const Chatbot = () => {
 
                 {isBotResponding ? (
                     
-                    <div className='p-2 space-y-3'>
-                        "Please wait while we generate your response... 
+                    <div className='p-2 space-y-3 justify-items-center'>
+                        "Please wait while i 🤖 generate your response... 
                <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
                <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
                <Skeleton className='w-[40rem] h-[2rem] rounded-full' />
                </div>
                 ) : (
-                    <Skeleton className='pl-16 w-[30rem] h-[1rem] rounded-md' />
+                    <div className='pl-3 pb-4 pt-4'>
+                    <Skeleton className='pl-8 pt-8 w-[40rem] h-[9rem] rounded-md'/>
+                    </div>
                 )}
             </div>
 
