@@ -14,7 +14,7 @@ export default function Home() {
         width={33}
         height={33}
         />
-      <main className="flex flex-col gap-8 row-start-2 sm:items-center">
+      <main className="flex flex-col gap-6 row-start-2 sm:items-center">
      
         <Chatbot/>
         <div className='flex justify-center items-center'>Your AI APP That will include everything imaginable.</div>
