@@ -2,12 +2,10 @@
 
 import { Skeleton } from '@/components/ui/skeleton';
 import { useState } from 'react';
-import axios from 'axios';
-import { middleware } from '../_middleware';
 import chatHandler from '../api/chat';
-const _cfAccessClientSecret = process.env._cfAccessClientSecret;
- const _clientId = process.env._clientId;
- const _accessToken = process.env._accessToken;
+// const _cfAccessClientSecret = process.env._cfAccessClientSecret;
+//  const _clientId = process.env._clientId;
+//  const _accessToken = process.env._accessToken;
 const Chatbot = () => {
     const [conversation, setConversation] = useState([]);
     const [userMessage, setUserMessage] = useState('');
