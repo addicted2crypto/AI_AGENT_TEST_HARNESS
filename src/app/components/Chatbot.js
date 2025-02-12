@@ -34,13 +34,13 @@ const Chatbot = () => {
             const chatResponse = chatHandler;
             const requestBody = {
                 "system" : "You are a world-class AI system, capable of complex reasoning and reflection. Reason through the query inside <thinking> tags, and then provide your final response inside <output> tags. If you detect that you made a mistake in your reasoning at any point, correct yourself inside <reflection> tags",
-                "model": "llama2",
-                // "model": "llama3.3:70b-instruct-q4_0",
+                // "model": "llama2",
+                "model": "llama3.3:70b-instruct-q4_0",
                 "messages": [{"role": "assistant", "content": ""}, { "role": "user", "content": userMessage }],
                 "stream": false
             };
             
-            const response = await fetch ('http://localhost:11434/api/chat', {
+            const response = await fetch ('http://localhost:2222/api/chat', {
             
             
                
