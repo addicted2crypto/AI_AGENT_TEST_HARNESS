@@ -45,13 +45,13 @@ const Chatbot = () => {
             
                
             method: 'POST', 
-            //  middleware ,
+            
                 
                     headers: { 'Content-Type': 'application/json'} ,
-                    // 'Authorization'  : `Bearer${_accessToken}`},
+                   
                    
                     body: JSON.stringify(requestBody),
-                    // chatHandler,
+                    
                 
                 });
             
