@@ -39,7 +39,7 @@ const Chatbot = () => {
                 "messages": [{"role": "assistant", "content": ""}, { "role": "user", "content": userMessage }],
                 "stream": false
             };
-            //can use a different fetch model here
+            //can use a different fetch method here
             // const response = await chatResponse(requestBody, access_token);
             const response = await fetch ('http://localhost:2222/api/chat', {
             
