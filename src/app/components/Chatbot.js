@@ -102,6 +102,7 @@ const Chatbot = () => {
                         Prompt:
                     </label>
                     <select value={currentPrompt} onChange={handlePromptChange} className='text-gray-900 mb-2'>
+                    {/* // add more prompt vaulues here */}
                         <option value="Reflection">
                             Reflection
                         </option>
