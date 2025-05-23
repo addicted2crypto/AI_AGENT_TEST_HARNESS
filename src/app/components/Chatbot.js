@@ -65,7 +65,7 @@ const Chatbot = () => {
             const data = await response.json();
 
             
-
+                // spread data to input all prev conversatinos
             setConversation((prevConversation) => [...prevConversation,
             // { type: 'user', message: userMessage },
             { type: 'bot', message: data.message.content }]);
@@ -103,7 +103,7 @@ const Chatbot = () => {
                     </label>
                     <select value={currentPrompt} onChange={handlePromptChange} className='text-gray-900 mb-2'>
                     {/* // add more prompt vaulues here */}
-                        <option value="Reflection">
+                        <option value="Reflection" >
                             Reflection
                         </option>
                         <option value="add other prompts here">
