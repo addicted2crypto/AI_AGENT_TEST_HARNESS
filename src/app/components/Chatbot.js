@@ -41,6 +41,8 @@ const Chatbot = () => {
             };
             //can use a different fetch method here to get the access token
             // const response = await chatResponse(requestBody, access_token);
+            //will call https://ai.ainetguard.com first post will use cf_access_client_secret,access_token then will create a bearer token
+            // const response = await chatResponse(requestBody, _cfAccessClientSecret, _clientId, _accessToken);
             const response = await fetch ('http://localhost:2222/api/chat', {
             
             
